@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Animais {
 
-//    Variáveis
+    //    Variáveis
     String nome;
     int idade;
     String sexo;
@@ -17,12 +17,12 @@ public class Animais {
     String alojamento;
     LocalDate ultimaConsultaVeterinaria;
 
-//    Instancia o Scanner
+    //    Instancia o Scanner
     Scanner scanner = new Scanner(System.in);
 
     List<Animais> listAnimais = new ArrayList<>();
 
-    public Animais (){
+    public Animais() {
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
@@ -32,7 +32,7 @@ public class Animais {
         this.alojamento = alojamento;
     }
 
-//    Getters e Setters
+    //    Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -104,9 +104,9 @@ public class Animais {
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
     }
-//    fim dos getters e setters
+//    fim dos getters e setter
 
-    public void cadastrarAnimais(){
+    public void cadastrarAnimais() {
         System.out.println("=============== Cadastro de Animais ===============");
         System.out.println("Nome do animal: ");
         nome = scanner.nextLine();
@@ -116,28 +116,52 @@ public class Animais {
         idade = scanner.nextInt();
         System.out.println("Sexo do animal: ");
         sexo = scanner.nextLine();
+        scanner.nextLine();
+        System.out.println("Hábito alimentar do animal: ");
+        habitoAlimentar = scanner.nextLine();
         System.out.println("Informe um id para o animal: ");
         idAnimal = scanner.nextInt();
+        System.out.println("\nAnimal cadastrado com sucesso.");
+
+        System.out.println("\nDados cadastrados do animal");
+        System.out.println("\nNome do animal: " + nome);
+        System.out.println("Espécie: " + especie);
+        System.out.println("Idade: " + idade);
+        System.out.println("Sexo: " + sexo);
+        System.out.println("Hábito alimentar: " + habitoAlimentar);
+        System.out.println("Id animal: " + idAnimal);
 
     }
 
-    public void adicionarAnimais(Animais animais){
+    public void adicionarAnimais(Animais animais) {
         listAnimais.add(animais);
     }
 
-    public void listarAnimais(){
-        for (Animais animais : listAnimais){
-            System.out.println(animais.nome);
+    public boolean procurarAnimais(String animalPesquisado) {
+        for (Animais animais : listAnimais) {
+            if (animais.nome.equalsIgnoreCase(animalPesquisado)) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public void listarAnimais() {
+        for (Animais animais : listAnimais) {
+            System.out.println("Consulta de informações do animal");
+            System.out.println("\nNome: " + animais.nome);
+            System.out.println("Espécie: " + animais.especie);
+            System.out.println("Idade: " + animais.idade);
+            System.out.println("Hábito Alimentar: " + animais.habitoAlimentar);
+            System.out.println("Localização do animal: " + animais.alojamento);
         }
     }
 
-    public Animais consultarAnimais(int idAnimal){
-        for (Animais animais : listAnimais){
-            if (animais.getIdAnimal().equalsIgnoreCase(idAnimal)){
-                return animais;
-            }
-        }
-        return null;
+
+
+
+    public void registrarHistoricoMedico(String informacao) {
+
     }
 
 }
